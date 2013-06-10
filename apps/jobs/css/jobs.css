@@ -1,0 +1,5 @@
+#jobItem div[data-role="content"] > p {
+  padding:.5em;
+  border:1px solid #dadada;
+  background:#fff;
+}

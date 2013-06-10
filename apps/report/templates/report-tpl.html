@@ -1,0 +1,106 @@
+<script type="text/template" id="ReportPageTemplate">
+  <div data-role="page" id="report">
+    <div id="mapWrapper">
+      <div id="mapHeader" data-role="header" data-theme="f">
+        <button type="button" id="mapButtonDone" class="ui-btn-left" data-icon="check" data-transition="slide" data-direction="reverse">Klar</button>
+        <h1>Välj position</h1>
+        <button type="button" id="mapButtonAbort" class="ui-btn-right" data-icon="delete" data-transition="slide" data-direction="reverse">Avbryt</button>
+      </div>
+
+      <div data-role="content" id="mapCanvas">
+        <h2>Karta</h2> 
+      </div>
+    </div>    
+
+    <div id="formWrapper">
+      <div data-role="header" data-theme="f">
+        <a href="#" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Hem</a>    
+        <h1>Felanmälan</h1>
+      </div>
+
+      <div data-role="content" id="formWrapper">
+        <h2>Felanmälan</h2>    
+        <p>
+        	Här kan du rapportera om något gått sönder eller lämna synpunkter på hur 
+        	Malmös gator, torg och parker sköts. Du kan också ställa frågor. Din 
+        	felanmälan/fråga kommer att skickas via e-post till gatukontorets 
+        	kundservice.
+        </p>
+      	<form action="apps/report/report.php" accept-charset="UTF-8" method="post" id='errorReportForm' enctype="multipart/form-data" data-ajax="false">
+      		<input id="latitude" name="latitude" type="hidden" />
+          <input id="longitude" name="longitude" type="hidden" />
+          
+          <label for="reportImage" class="ui-hidden-accessible">Bifoga bild</label>
+          <input id="reportImage" name="reportImage" type="file" />
+          <div id="reportImageMsg"></div> 
+
+          <div data-role="fieldcontain" class="ui-hide-label">
+      		  <label for="textarea" class="ui-input-text">Beskriv felet:</label>
+  				  <textarea cols="40" rows="8" name="errorDescription" id="errorDescription" data-mini="true" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini" placeholder='Beskriv felet'></textarea>
+    			</div>
+    			
+    			<div data-role="fieldcontain" class="ui-hide-label">
+        	 <label for="textarea" class="ui-input-text">Kontaktinfo:</label>
+    			 <textarea cols="40" rows="8" name="errorContactInfo" id="errorContactInfo" data-mini="true" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini" placeholder='Kontaktinfo (valfritt)'></textarea>
+    			</div>
+    			
+          <label for="username"></label>
+          <input type="text" name="username" id="username">
+
+          <p id='t1'>Observera att din nuvarande position kommer att bifogas felanmälan.</p>
+    			<div class="validateMessages"></div>
+          <div class="otherMessages"></div>
+    			<button type="submit" data-theme="f" name="submitReport" id="submitReport" value="submit-value" class="ui-btn-hidden" data-disabled="false">Skicka</button>
+      	</form>
+      </div>
+    </div>
+
+    <div data-role="popup" id="whichPosition" class="ui-popup ui-overlay-shadow ui-corner-all ui-body-c" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin" data-theme="f" data-overlay-theme="f">
+      <h2>Ange position</h2>
+      <p>Välj om din position ska hämtas automatiskt eller ange den själv</p>
+      <button type="button" data-theme="f" id='mapPosCurrent'>Hämta automatiskt</button>
+      <button type="button" data-theme="f" id='mapPosFetch'>Ange på karta</button>
+      <button type="button" data-theme="f" id='mapPosAbort'>Avbryt</button>
+    </div>
+
+  </div>
+  
+  
+
+</script>
+
+<script type="text/template" id="ReportPageSuccessTemplate">
+  <div data-role="page" id="report">
+    <div data-role="header" data-theme="f">
+      <a href="#report" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Felanmälan</a>    
+      <h1>Felanmälan</h1>
+    </div>
+
+    <div data-role="content" id="formWrapper">
+      <h2>Felanmälan skickad</h2>    
+      <p>
+        Din felanmälan har skickats
+      </p>
+    </div>
+  </div>
+  
+</script>
+
+<script type="text/template" id="ReportPageErrorTemplate">
+  <div data-role="page" id="report">
+    <div data-role="header" data-theme="f">
+      <a href="#report" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Felanmälan</a>    
+      <h1>Felanmälan</h1>
+    </div>
+
+    <div data-role="content" id="formWrapper">
+      <h2>Felanmälan - Problem</h2>    
+      <p>
+        Det uppstod ett fel vid din felanmälan. Vänligen försök igen om en liten stund.
+      </p>
+    </div>
+  </div>
+  
+</script>
+
+

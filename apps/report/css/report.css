@@ -1,0 +1,16 @@
+.error {
+	color:red;
+}
+
+.validateMessages {
+	color:red;
+}
+
+.otherMessages {
+	color:red;
+}
+
+
+#username {
+	display:none;
+}

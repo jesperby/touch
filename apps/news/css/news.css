@@ -1,0 +1,24 @@
+img.inlineimg {
+  float:left;
+  margin:0 .5em .1em 0;
+  padding:.1em;
+  background-color:#fff;
+  border:1px solid #dadada;
+}
+
+.article-date {
+  font-size:.5em;
+  color:#999;
+  margin-top:0;
+  padding-top:0;
+  display:block;
+  font-weight:normal;
+}
+
+#newsArticle div[data-role="content"] div.content-wrap {
+/*
+  padding:.5em;
+  border:1px solid #dadada;
+  background:#fff;
+*/
+}

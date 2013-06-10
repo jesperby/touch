@@ -1,0 +1,55 @@
+<script type="text/template" id="newsListTemplate">
+  <div data-role="page" id="newsList">
+
+    <div data-role="header" data-theme="f">
+      <h1>Nyheter</h1>
+    </div>
+
+    <div data-role="content">
+      <% if(articles.length) { %>
+        <ul data-role="listview" class="article" data-filter-theme="d" data-split-icon="info">
+          <% _.each(articles, function (article) { %>
+            <li>
+              <a data-transition="slide" href="<%= article.url %>" class="ui-link-inherit">
+                
+                <h3 class="ui-li-heading"><%= article.title %></h3>
+
+                <p class="ui-li-desc"><%= article.pubDate %></p>
+                <p class="ui-li-desc"><%= article.description %></p>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        Inga nyheter hittades.
+      <% } %>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/template" id="newsArticleTemplate">
+  <div data-role="page" id="newsArticle">
+    <div data-role="header" data-theme="f">
+      <a href="#news" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Nyheter</a>
+      <h1></h1>
+    </div>
+
+    <div data-role="content">
+            <h2>
+        <%= article.title %>
+        <span class="article-date"><%= article.pubDate %></span>
+      </h2>
+      <p><%= article.description ? article.description : '' %></p>
+      <div class="content-wrap">
+        <p>
+          <% if(article.enclosure) { %>
+          <img class="inlineimg" src="<%= article.enclosure.url %>" alt="<%= article.title %>" />
+          <% } %>
+          <%= article.content ? article.content : '' %>
+        </p>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</script>

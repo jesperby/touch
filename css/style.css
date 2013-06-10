@@ -1,0 +1,108 @@
+* {
+  font-family:Verdana,sans-serif;
+}
+div[data-role="content"] * {
+  /*font-family:Georgia,sans-serif;*/
+}
+.listTitle{
+  text-align: center;
+}
+
+.ui-icon-mstad-small {
+ background-image: url("images/mstad-small.png");
+ width: 18px;
+}
+
+body {
+  background:#ffffff url("images/loading.png") no-repeat center center;
+}
+
+
+div[data-role="footer"] {
+/*  background-image: url("images/mstad-small.png");
+  background-position:99% center;
+  background-repeat:no-repeat;
+*/}
+
+
+/* Override the filter textfield shadow on focus */
+.ui-listview-filter div.ui-input-search.ui-focus {
+ -moz-box-shadow: inset 0px 1px 4px     rgba(0,0,0,.2);
+ -webkit-box-shadow: inset 0px 1px 4px   rgba(0,0,0,.2);
+ box-shadow: inset 0px 1px 4px       rgba(0,0,0,.2);
+}
+
+ul.service-menu img.ui-li-thumb {
+  left: 1px;
+  height: 80px; 
+  position: absolute;
+}
+
+.ui-li-desc {
+  color:#999;
+  font-weight:normal;
+}
+
+/* Overrride the app list heights */
+#home .ui-listview-inset .ui-li {
+  height: 58px;
+}
+#home .ui-li-heading {
+  display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0em 0em 0.4em 0em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+h2,h3 {
+  margin:0px;
+}
+h2.faded,h3.faded {
+  color:#999;
+}
+/* Footer color */
+.ui-bar-d {
+  color:#00693C;
+}
+
+.clear {
+  clear:both;
+  width:100%;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+#mapContainer {
+  width: 100%;
+  height: 100%;
+}
+*/
+
+#poiMap {
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+}
+
+#poiMap .ui-content {
+  padding: 0px;
+}
+
+#mapCanvas {
+  overflow:hidden;
+}
+
+/*
+#mapCanvas {
+  width: 100%;
+  height: 100%;
+}
+*/

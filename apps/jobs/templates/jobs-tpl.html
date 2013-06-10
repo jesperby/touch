@@ -1,0 +1,37 @@
+<script type="text/template" id="listTemplate">
+  <div data-role="page" id="jobList">
+    <div data-role="header" data-theme="f">
+      <h1>Lediga Tjänster</h1>
+    </div>
+
+    <div data-role="content">
+      <ul data-role="listview" class="article" data-filter-theme="d" data-filter-placeholder="Filtrera i listan"  data-filter="true" data-split-icon="info">
+        <% _.each(articles, function (article) { %>
+          <li>
+            <a data-transition="slide" href="<%= article.url %>" class="ui-link-inherit">
+              <p class="ui-li-aside ui-li-desc pubdate"><%= article.pubDate %></p>
+              <h3 class="ui-li-heading"><%= article.title %></h3>
+              <p class="ui-li-desc"><%= article.description %></p>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/template" id="itemTemplate">
+  <div data-role="page" id="jobItem">
+    <div data-role="header" data-theme="f">
+      <a href="#jobs" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Lediga tjänster</a>
+      <h1></h1>
+    </div>
+
+    <div data-role="content">
+      <h2><%= item.title %></h2>
+      <%= item.content %>
+      <p><a href="<%= item.link %>">Läs mer om tjänsten</a></p>      
+    </div>
+  </div>
+</script>

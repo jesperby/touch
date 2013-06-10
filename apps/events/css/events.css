@@ -1,0 +1,45 @@
+.event-content > h2 {
+  margin-bottom:1em;
+}
+  
+.event-content dl, .event-content .introduction, .event-content .description, .event-content img.eventimg {
+  padding:.5em;
+}
+
+.event-content dl, .event-content .introduction, .event-content .description, .event-content .occasions, .event-content img.eventimg {
+  padding-top:.5em;
+  padding-bottom:.5em;
+  margin-top:.1em;  
+  margin-bottom:.5em;    
+  border:1px solid #dadada;
+  background:#fff;
+  clear:both;
+}
+
+.event-content .occasions  {
+}
+  
+.event-content dt {
+  float:left;
+  clear:left;
+}
+
+
+#event-search-form ul {
+  padding:0px;
+  margin:0em;
+  margin-bottom:.5em;  
+  font-size:.9em;
+}
+
+#event-search-form label {
+  padding:0px;
+  margin:0px;
+  font-size:.9em;
+  color:#999;
+}
+
+#event-search-form #event-search-btn {
+  padding-top:10em;
+}
+

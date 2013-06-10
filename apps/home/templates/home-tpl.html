@@ -1,0 +1,27 @@
+<script type="text/template" id="startPageTemplate">
+  <div data-role="page" id="home">
+    <div data-role="header" data-theme="f">
+      <h1>Malmö stad</h1>
+    </div>
+
+    <div data-role="content">
+      <% for(var section in apps) { %>
+        <ul class="service-menu" data-role="listview" data-inset="true" data-split-icon="info">
+          <% var app; %>
+          <% for(var appname in apps[section]) { %>
+            <% app = apps[section][appname] %>
+            <% if(app['show-in-menu']) { %>            
+              <li data-icon="<%= app.icon %>">
+                <a id="app_<%= appname %>" data-transition="slide" href="<%= app.uri %>">
+                  <h3><%= app.label %></h3>
+                  <p><%= app.description %></p>
+                </a>
+              </li>
+            <% } %>
+          <% } %>
+        </ul>
+      <% } %>
+    </div>
+  </div>
+</script>
+

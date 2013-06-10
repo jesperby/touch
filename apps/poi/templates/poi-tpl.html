@@ -1,0 +1,100 @@
+
+<script type="text/template" id="poiTypesTemplate">
+  <div data-role="page" id="poiTypeList">
+
+    <div data-role="header" data-theme="f">
+      <a href="#home" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Hem</a>
+      <h1>Kategorier</h1>
+    </div>
+
+    <div data-role="content">
+      <% if(types.length) { %>
+        <ul id="poicatlist" data-role="listview" class="article" data-filter-theme="d" data-split-icon="info">
+          <% _.each(types, function (type) { %>
+            <li>
+              <a data-transition="slide" href="#poi/list<%= (!type.id ? '' : '/'+type.id) %>" class="ui-link-inherit">
+              <% if(type.image) { %>
+                <img src="<%=type.image%>" alt="<%=type.name%>" />
+              <% } %>  
+                <h3 class="ui-li-heading"><%= type.name %></h3>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        Inga kategorier för platser hittades.
+      <% } %>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="poiListTemplate">
+  <div data-role="page" id="poiList">
+
+    <div data-role="header" data-theme="f">
+      <a href="#poi" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Kategorier</a>
+      <h1></h1>   
+    </div>
+
+    <div data-role="content">
+      <% if(pois.length) { %>
+        <ul id="poicatlist" data-role="listview" class="article" data-filter-theme="d" data-filter-placeholder="Filtrera i listan"  data-filter="true" data-split-icon="info">
+          <a href="#poi/map<%=typeid === null ? '' : '/'+typeid %>" class="ui-btn-right" data-icon="arrow-d" data-transition="slidedown">Visa alla på karta</a><br />
+          <% _.each(pois, function (poi) { %>
+            <%
+              var img = poi.active == 'true' ? types.get(poi.type).get('image') : types.get(poi.type).get('closedImage');
+            %>
+            <li>
+              <a data-transition="slide" href="#poi/info/<%= poi.id %>" class="ui-link-inherit">
+                <% if(img) { %>
+                  <img src="<%=img%>" alt="<%=poi.name%>" />
+                <% } %>
+                <%= poi.name %><br /><br />
+                <%
+                  var closed = poi.active == 'true' ? '' : 'Tillfälligt stängd';
+                %>
+                <div class='poiOpenClosed'><%=closed%></div>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        Inga platser hittades.
+      <% } %>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="poiInfoTemplate">
+  <div data-role="page" id="poiInfo">
+
+    <div data-role="header" data-theme="f">
+      <a href="#poi/list/<%=poiinfo.type%>" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse"><%=poiinfo.typeName%></a>
+      <h1></h1>
+    </div>
+
+    <div data-role="content">
+      <h2>
+        <%= poiinfo.name %>
+      </h2>
+      <a href="#poi/map/<%=poiinfo.type%>/<%=poiinfo.id%>">Visa på karta</a>
+      <p><%= poiinfo.address %></p>
+      <img src="<%= poiinfo.image %>"/><br />
+      <a href="#poi/info/directions/<%=poiinfo.id%>" data-role="button" data-inline="true" data-theme="f">Hitta hit</a>
+      <a href="#report/<%=poiinfo.latitude%>/<%=poiinfo.longitude%>" data-role="button" data-inline="true" data-theme="f">Felanmälan</a>
+      <p><%= poiinfo.description %></p>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="poiMapTemplate">
+  <div data-role="page" id="poiMap">
+    <div id="mapHeader" data-role="header" data-theme="f">
+      <a href="" id="findMe" class="ui-btn-left" data-icon="info">Hitta mig</a>  
+      <h1>Karta</h1>
+      <a href="" data-rel="back" class="ui-btn-right" data-icon="arrow-u" data-transition="slideup" data-direction="reverse">Stäng</a>      
+    </div>
+    <div id="mapCanvas" data-role="content" >
+    </div>
+  </div>
+</script>
