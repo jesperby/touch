@@ -150,11 +150,31 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
         var $footer = parsehtml.find( 'div[data-role="footer"]' );
         var directions_path = '#poi/info/directions' + '/' + this.poiid + '/';
 
+        var driving_active = "";
+        var transit_active = "";
+        var bicycling_active = "";
+        var walking_active = "";
+
+        switch( this.directionsType ) {
+          case "driving":
+            driving_active = "ui-btn-active ui-state-persist";
+            break;
+          case "transit":
+            transit_active = "ui-btn-active ui-state-persist";
+            break;
+          case "bicycling":
+            bicycling_active = "ui-btn-active ui-state-persist";
+            break;
+          case "walking":
+            walking_active = "ui-btn-active ui-state-persist";
+            break;
+        }
+
         $footer.append( $('<div data-role="controlgroup" data-type="horizontal">' +
-          '<a href="' + directions_path + 'driving' + '" data-role="button" data-icon="plus">Bil</a>' +
-          '<a href="' + directions_path + 'transit' + '" data-role="button" data-icon="plus">Transit</a>' +
-          '<a href="' + directions_path + 'bycycling' + '" data-role="button" data-icon="plus">Cykel</a>' +
-          '<a href="' + directions_path + 'walking' + '" data-role="button" data-icon="plus">Gång</a>' +
+          '<a href="' + directions_path + 'driving' + '" data-role="button" data-icon="plus" class="' + driving_active + '">Bil</a>' +
+          '<a href="' + directions_path + 'transit' + '" data-role="button" data-icon="plus" class="' + transit_active + '">Transit</a>' +
+          '<a href="' + directions_path + 'bicycling' + '" data-role="button" data-icon="plus" class="' + bicycling_active + '">Cykel</a>' +
+          '<a href="' + directions_path + 'walking' + '" data-role="button" data-icon="plus" class="' + walking_active + '">Gång</a>' +
           '</div>') );
       }
     },
