@@ -56,8 +56,20 @@ define(
       });
     }
 
-    function setCenter(point) {
-      map.setCenter(new Conf.GMaps.LatLng(point.lat, point.lng));
+    function setCenter( point, markCenter ) {
+      markCenter = markCenter || null;
+
+      var center = new Conf.GMaps.LatLng(point.lat, point.lng);
+      map.setCenter( center );
+
+      if( markCenter ) {
+        var marker = new google.maps.Marker({
+          position: center, 
+          map: map
+        }); 
+        
+        markers.push(marker);
+      }
     }
 
     function drawDirections(from, to) {
