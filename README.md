@@ -1,7 +1,5 @@
-Touch
-=====
-
-Web based touch interface to selected services
-
-## License
-Released under AGPL version 3.
+gittest
+=======
+amend test
+2nd version
+testing amending
