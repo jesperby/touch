@@ -80,7 +80,7 @@
       <a href="#poi/map/<%=poiinfo.type%>/<%=poiinfo.id%>">Visa på karta</a>
       <p><%= poiinfo.address %></p>
       <img src="<%= poiinfo.image %>"/><br />
-      <a href="#poi/info/directions/<%=poiinfo.id%>" data-role="button" data-inline="true" data-theme="f">Hitta hit</a>
+      <a href="#poi/info/directions/<%=poiinfo.id%>/bicycling" data-role="button" data-inline="true" data-theme="f">Hitta hit</a>
       <a href="#report/<%=poiinfo.latitude%>/<%=poiinfo.longitude%>" data-role="button" data-inline="true" data-theme="f">Felanmälan</a>
       <p><%= poiinfo.description %></p>
     </div>
@@ -95,6 +95,9 @@
       <a href="" data-rel="back" class="ui-btn-right" data-icon="arrow-u" data-transition="slideup" data-direction="reverse">Stäng</a>      
     </div>
     <div id="mapCanvas" data-role="content" >
+    </div>
+    <div id="mapFooter" data-role="footer" data-theme="f">
+       
     </div>
   </div>
 </script>

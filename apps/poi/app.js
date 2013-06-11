@@ -15,7 +15,7 @@ define(['jquery', 'module', 'chrome'], function ($, $self, Chrome) {
       'poi/map/:typeid': 'showPointMap',
       'poi/map': 'showPointMap',
       'poi/info/:poiid': 'showPointInfo',
-      'poi/info/directions/:poiid': 'showPointInfoDirections'
+      'poi/info/directions/:poiid/:dirtype': 'showPointInfoDirections'
     },
     
     showPointTypes: function(){
@@ -39,16 +39,16 @@ define(['jquery', 'module', 'chrome'], function ($, $self, Chrome) {
       });    
     },
 
-    showPointMap: function(typeid, poiid, directions){
+    showPointMap: function(typeid, poiid, directions, directionsType){
       $.mobile.loading('show');
       require(['apps/poi/js/PoiMapView'], function (PoiMapView) {
-        new PoiMapView({"typeid":typeid, "poiid":poiid, "directions":directions});
+        new PoiMapView({"typeid":typeid, "poiid":poiid, "directions":directions, "directionsType":directionsType});
       });    
     },
 
-    showPointInfoDirections: function(poiid){
+    showPointInfoDirections: function(poiid, directionsType){
       $.mobile.loading('show');
-      this.showPointMap(null, poiid, true);
+      this.showPointMap(null, poiid, true, directionsType);
     }
   }
   

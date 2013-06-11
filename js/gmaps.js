@@ -56,29 +56,37 @@ define(
       });
     }
 
-    function setCenter( point, markCenter ) {
-      markCenter = markCenter || null;
-
-      var center = new Conf.GMaps.LatLng(point.lat, point.lng);
-      map.setCenter( center );
-
-      if( markCenter ) {
-        var marker = new google.maps.Marker({
-          position: center, 
-          map: map
-        }); 
-        
-        markers.push(marker);
-      }
+    function setCenter(point) {
+      map.setCenter(new Conf.GMaps.LatLng(point.lat, point.lng));
     }
 
-    function drawDirections(from, to) {
+    function drawDirections(from, to, directionsType) {
+
+      // google map travel mode
+      var tMode = Conf.GMaps.TravelMode.BICYCLING;
+      switch( directionsType ) {
+        case "driving":
+          tMode = Conf.GMaps.TravelMode.DRIVING;
+          break;
+        case "bicycling":
+          tMode = Conf.GMaps.TravelMode.BICYCLING;
+          break;
+        case "transit":
+          tMode = Conf.GMaps.TravelMode.TRANSIT;
+          break;
+        case "walking":
+          tMode = Conf.GMaps.TravelMode.WALKING;
+          break;
+        default:
+          tMode = Conf.GMaps.TravelMode.BICYCLING;
+      }
+
       directionsDisplay.setMap(null);
       directionsDisplay.setMap(map);            
       var req = {
         origin:new Conf.GMaps.LatLng(from.lat, from.lng),
         destination:new Conf.GMaps.LatLng(to.lat, to.lng),
-        travelMode: Conf.GMaps.TravelMode.BICYCLING
+        travelMode: tMode
       };
       directionsService.route(req, function(result, status) {
         if (status == Conf.GMaps.DirectionsStatus.OK) {

@@ -7,12 +7,14 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
     typeid: null,
     poiid: null,
     directions: null,
+    directionsType: null,
     all: false,
     el: "body",
     initialize: function(info) {
       this.typeid = info.typeid || null;
       this.poiid = info.poiid || null;
       this.directions = info.directions || false;
+      this.directionsType = info.directionsType || null;
       this.all = !this.typeid && !this.poiid && !this.directions;
       var that = this;
 
@@ -24,7 +26,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
           height: $("#poiMap").height() - $("#mapHeader").height()
         } );
 
-        that.mapRender(that.typeid, that.poiid, that.directions, that.all);
+        that.mapRender(that.typeid, that.poiid, that.directions, that.directionsType, that.all);
       });
       if(!this.collection.loaded) {
         var that = this;
@@ -42,10 +44,11 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       "click #findMe": "findMeCenter"
     },
 
-    mapRender: function(typeid, poiid, directions, all) {
+    mapRender: function(typeid, poiid, directions, directionsType, all) {
       typeid = typeid || null;
       poiid = poiid || null;
       directions = directions || false; 
+      directionsType = directionsType || null; 
       var poiCollection = !typeid || all ? 
         this.collection : 
         this.collection.filterByType( typeid )
@@ -58,7 +61,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       this.mapLoad()
         .mapDrawPoints(poiCollection, typeid, all, useBounds)
         .mapCenterPoint(mainpoi)
-        .mapDrawDirections(directions, mainpoi);
+        .mapDrawDirections(directions, directionsType, mainpoi);
         
       if( !useBounds) {
         this.mapSetZoom(19);
@@ -108,7 +111,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       return this;
     },
     
-    mapDrawDirections: function(directions, mainpoi) {
+    mapDrawDirections: function(directions, directionsType, mainpoi) {
       if( !directions || !mainpoi) {
         return this;
       }
@@ -118,7 +121,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
             lat: mainpoi.get("latitude"),
             lng: mainpoi.get("longitude"),            
           };
-          GMaps.drawDirections(from, to);
+          GMaps.drawDirections(from, to, directionsType);
         }
       });
       return this;      
@@ -129,27 +132,41 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
         this.collection : 
         this.collection.filterByType( this.typeid );
       var html = this.template({pois: filteredPois.toJSON()});
-      
-      Chrome.showPage( Chrome.parseHTML(html) );
+
+      //console.log( "html", html );
+
+      var parsehtml = Chrome.parseHTML(html);
+      this.addFooter( parsehtml, filteredPois );
+      Chrome.showPage( parsehtml );
+    },
+
+    /**
+     * Function that adds footer and footer content
+     */
+    addFooter: function( parsehtml, pois ) {
+      console.log( "pois", pois )
+      // Directions
+      if( window.location.hash.substring(0, 20) == '#poi/info/directions' ) {
+        var $footer = parsehtml.find( 'div[data-role="footer"]' );
+        var directions_path = '#poi/info/directions' + '/' + this.poiid + '/';
+
+        $footer.append( $('<div data-role="controlgroup" data-type="horizontal">' +
+          '<a href="' + directions_path + 'driving' + '" data-role="button" data-icon="plus">Bil</a>' +
+          '<a href="' + directions_path + 'transit' + '" data-role="button" data-icon="plus">Transit</a>' +
+          '<a href="' + directions_path + 'bycycling' + '" data-role="button" data-icon="plus">Cykel</a>' +
+          '<a href="' + directions_path + 'walking' + '" data-role="button" data-icon="plus">Gång</a>' +
+          '</div>') );
+      }
     },
 
     findMeCenter: function() {
       Locator.location(function(myPos, success){
         if(success) {
-          GMaps.setCenter(myPos, true);
+          GMaps.setCenter(myPos);
         }
       });
 
       return false;
-      // Locator.location(function(from, success){
-      //   if(success) {
-      //     var to = {
-      //       lat: mainpoi.get("latitude"),
-      //       lng: mainpoi.get("longitude"),            
-      //     };
-      //     GMaps.drawDirections(from, to);
-      //   }
-      // });
     }
   });
   
