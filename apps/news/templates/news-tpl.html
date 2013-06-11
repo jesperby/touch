@@ -36,15 +36,15 @@
     </div>
 
     <div data-role="content">
-            <h2>
+            <h2><a href="<%= article.link %>">
         <%= article.title %>
         <span class="article-date"><%= article.pubDate %></span>
-      </h2>
+      </a></h2>
       <p><%= article.description ? article.description : '' %></p>
       <div class="content-wrap">
         <p>
           <% if(article.enclosure) { %>
-          <img class="inlineimg" src="<%= article.enclosure.url %>" alt="<%= article.title %>" />
+          <a href="<%= article.link %>"><img class="inlineimg" src="<%= article.enclosure.url %>" alt="<%= article.title %>" /></a>
           <% } %>
           <%= article.content ? article.content : '' %>
         </p>

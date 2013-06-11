@@ -6,7 +6,7 @@ img.inlineimg {
   border:1px solid #dadada;
 }
 
-.article-date {
+#newsArticle .article-date {
   font-size:.5em;
   color:#999;
   margin-top:0;
@@ -15,10 +15,7 @@ img.inlineimg {
   font-weight:normal;
 }
 
-#newsArticle div[data-role="content"] div.content-wrap {
-/*
-  padding:.5em;
-  border:1px solid #dadada;
-  background:#fff;
-*/
+#newsArticle a.ui-link {
+  color:black;
+  text-decoration:none;
 }
