@@ -182,7 +182,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
     findMeCenter: function() {
       Locator.location(function(myPos, success){
         if(success) {
-          GMaps.setCenter(myPos);
+          GMaps.setCenter(myPos, true);
         }
       });
 
