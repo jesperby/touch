@@ -133,8 +133,6 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
         this.collection.filterByType( this.typeid );
       var html = this.template({pois: filteredPois.toJSON()});
 
-      //console.log( "html", html );
-
       var parsehtml = Chrome.parseHTML(html);
       this.urlAlterHtml( parsehtml, filteredPois );
       Chrome.showPage( parsehtml );
