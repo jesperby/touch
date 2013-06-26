@@ -136,17 +136,18 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       //console.log( "html", html );
 
       var parsehtml = Chrome.parseHTML(html);
-      this.addFooter( parsehtml, filteredPois );
+      this.urlAlterHtml( parsehtml, filteredPois );
       Chrome.showPage( parsehtml );
     },
 
     /**
-     * Function that adds footer and footer content
+     * Function that makes addtional html alterations based on current url
      */
-    addFooter: function( parsehtml, pois ) {
-      console.log( "pois", pois )
-      // Directions
+    urlAlterHtml: function( parsehtml, pois ) {
+      // Url directions
       if( window.location.hash.substring(0, 20) == '#poi/info/directions' ) {
+        
+        // Add footer with various direction options
         var $footer = parsehtml.find( 'div[data-role="footer"]' );
         var directions_path = '#poi/info/directions' + '/' + this.poiid + '/';
 
@@ -176,6 +177,12 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
           '<a href="' + directions_path + 'bicycling' + '" data-role="button" data-icon="plus" class="' + bicycling_active + '">Cykel</a>' +
           '<a href="' + directions_path + 'walking' + '" data-role="button" data-icon="plus" class="' + walking_active + '">Gång</a>' +
           '</div>') );
+
+        // Link close button back to poi info page, instead of simple 'back'
+        var $closeButton = parsehtml.find( '#closeButton' );
+        $closeButton.removeAttr('data-direction');
+        $closeButton.removeAttr('data-rel');
+        $closeButton.prop('href', "#poi/info/" + this.poiid );
       }
     },
 
