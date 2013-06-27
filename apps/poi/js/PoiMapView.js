@@ -62,7 +62,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       var useBounds = mainpoi ? false : true;
 
       this.mapLoad()
-        .mapDrawPoints(poiCollection, typeid, all, useBounds)
+        .mapDrawPoints(poiCollection, mainpoi, typeid, all, useBounds)
         .mapCenterPoint(mainpoi)
         .mapDrawDirections(directions, directionsType, mainpoi);
         
@@ -76,24 +76,40 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
       return this;
     },
       
-    mapDrawPoints: function(poiCollection, typeid, all, useBounds) {
+    mapDrawPoints: function(poiCollection, mainpoi, typeid, all, useBounds) {
       if( typeid === null && !all) {
         return this;
       }
       var pois = [], image;  
-      poiCollection.each(function(poi){ 
-        image = poi.get("active") ? 
-          PoiTypeCollection.get(poi.get('type')).get( 'mapImage' ) :
-          PoiTypeCollection.get(poi.get('type')).get( 'closedMapImage' );
+
+      if( !mainpoi ) {
+        poiCollection.each(function(poi){ 
+          image = poi.get("active") ? 
+            PoiTypeCollection.get(poi.get('type')).get( 'mapImage' ) :
+            PoiTypeCollection.get(poi.get('type')).get( 'closedMapImage' );
+
+          pois.push( {
+            name: poi.get("name"),
+            link: '<a href="#poi/info/'+poi.id+'">'+poi.get('name')+'</a>',
+            lat: poi.get("latitude"), 
+            lng: poi.get("longitude"), 
+            image: image
+          });
+        });
+      } else {
+        image = mainpoi.get("active") ? 
+          PoiTypeCollection.get(mainpoi.get('type')).get( 'mapImage' ) :
+          PoiTypeCollection.get(mainpoi.get('type')).get( 'closedMapImage' );
 
         pois.push( {
-          name: poi.get("name"),
-          link: '<a href="#poi/info/'+poi.id+'">'+poi.get('name')+'</a>',
-          lat: poi.get("latitude"), 
-          lng: poi.get("longitude"), 
+          name: mainpoi.get("name"),
+          link: '<a href="#poi/info/'+mainpoi.id+'">'+mainpoi.get('name')+'</a>',
+          lat: mainpoi.get("latitude"), 
+          lng: mainpoi.get("longitude"), 
           image: image
         });
-      });
+      }
+
       GMaps.drawPoints( pois, useBounds );
       return this;      
     },
