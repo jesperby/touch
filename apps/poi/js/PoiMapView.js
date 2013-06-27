@@ -20,7 +20,10 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
 
       $(this.el).undelegate('#findMe', 'click');
 
-      $(document).on('pageshow', '#poiMap', function (event) {
+      // Remove all previous bound events to avoid repeated bindings
+      $(document).off('pageshow.poiMap');
+
+      $(document).on('pageshow.poiMap', '#poiMap', function (event) {
         $("#mapCanvas").css({
           width: $("#poiMap").width(), 
           height: $("#poiMap").height() - $("#mapHeader").height()
