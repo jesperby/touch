@@ -67,7 +67,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
         .mapDrawDirections(directions, directionsType, mainpoi);
         
       if( !useBounds) {
-        this.mapSetZoom(19);
+        this.mapSetZoom(15);
       }
     },
 
