@@ -3,7 +3,7 @@
   <div data-role="page" id="poiTypeList">
 
     <div data-role="header" data-theme="f">
-      <a href="#home" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Hem</a>
+      <a href="#home" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse">Hem</a>
       <h1>Kategorier</h1>
     </div>
 
@@ -12,7 +12,7 @@
         <ul id="poicatlist" data-role="listview" class="article" data-filter-theme="d" data-split-icon="info">
           <% _.each(types, function (type) { %>
             <li>
-              <a data-transition="slide" href="#poi/list<%= (!type.id ? '' : '/'+type.id) %>" class="ui-link-inherit">
+              <a data-transition="none" href="#poi/list<%= (!type.id ? '' : '/'+type.id) %>" class="ui-link-inherit">
               <% if(type.image) { %>
                 <img src="<%=type.image%>" alt="<%=type.name%>" />
               <% } %>  
@@ -32,20 +32,20 @@
   <div data-role="page" id="poiList">
 
     <div data-role="header" data-theme="f">
-      <a href="#poi" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Kategorier</a>
+      <a href="#poi" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse">Kategorier</a>
       <h1></h1>   
     </div>
 
     <div data-role="content">
       <% if(pois.length) { %>
         <ul id="poicatlist" data-role="listview" class="article" data-filter-theme="d" data-filter-placeholder="Filtrera i listan"  data-filter="true" data-split-icon="info">
-          <a href="#poi/map<%=typeid === null ? '' : '/'+typeid %>" class="ui-btn-right" data-icon="arrow-d" data-transition="slidedown">Visa alla på karta</a><br />
+          <a href="#poi/map<%=typeid === null ? '' : '/'+typeid %>" class="ui-btn-right" data-icon="arrow-d" data-transition="none">Visa alla på karta</a><br />
           <% _.each(pois, function (poi) { %>
             <%
               var img = poi.active == 'true' ? types.get(poi.type).get('image') : types.get(poi.type).get('closedImage');
             %>
             <li>
-              <a data-transition="slide" href="#poi/info/<%= poi.id %>" class="ui-link-inherit">
+              <a data-transition="none" href="#poi/info/<%= poi.id %>" class="ui-link-inherit">
                 <% if(img) { %>
                   <img src="<%=img%>" alt="<%=poi.name%>" />
                 <% } %>
@@ -69,7 +69,7 @@
   <div data-role="page" id="poiInfo">
 
     <div data-role="header" data-theme="f">
-      <a href="#poi/list/<%=poiinfo.type%>" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse"><%=poiinfo.typeName%></a>
+      <a href="#poi/list/<%=poiinfo.type%>" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse"><%=poiinfo.typeName%></a>
       <h1></h1>
     </div>
 

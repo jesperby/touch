@@ -49,8 +49,7 @@ define(['jquery', 'underscore', 'backbone', 'router', 'chrome', 'jqm'],function(
     });
   }
   
-  // var defpt = $.mobile.defaultPageTransition;
-  var defs = $.mobile.changePage.defaults;
+  $.mobile.defaultPageTransition = 'none';
   
   function events() {
     
@@ -60,7 +59,7 @@ define(['jquery', 'underscore', 'backbone', 'router', 'chrome', 'jqm'],function(
       if($this.attr('data-transition')) {
         $.mobile.changePage.defaults.transition = $this.attr('data-transition');
       } else {
-        $.mobile.changePage.defaults.transition = defs.transition;
+        $.mobile.changePage.defaults.transition = 'none';
       }
 
       if($this.attr('data-direction')) {

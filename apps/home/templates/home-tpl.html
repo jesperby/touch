@@ -12,7 +12,7 @@
             <% app = apps[section][appname] %>
             <% if(app['show-in-menu']) { %>            
               <li data-icon="<%= app.icon %>">
-                <a id="app_<%= appname %>" data-transition="slide" href="<%= app.uri %>">
+                <a id="app_<%= appname %>" data-transition="none" href="<%= app.uri %>">
                   <h3><%= app.label %></h3>
                   <p><%= app.description %></p>
                 </a>

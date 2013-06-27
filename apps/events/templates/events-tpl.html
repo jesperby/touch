@@ -8,14 +8,14 @@
     <div data-role="content">
       
       <ul data-role="listview" class="article" data-inset="true" data-split-icon="info">
-        <li data-icon="false"><a data-transition="slide" href="#events/search-results//<%=catAllId%>//<%=today%>/<%=today%>">Idag</a></li>
-        <li data-icon="false"><a data-transition="slide" href="#events/search-results//<%=catAllId%>//<%=tomorrow%>/<%=tomorrow%>">Imorgon</a></li>
-        <li data-icon="false"><a data-transition="slide" href="#events/search">Sök</a></li>
+        <li data-icon="false"><a data-transition="none" href="#events/search-results//<%=catAllId%>//<%=today%>/<%=today%>">Idag</a></li>
+        <li data-icon="false"><a data-transition="none" href="#events/search-results//<%=catAllId%>//<%=tomorrow%>/<%=tomorrow%>">Imorgon</a></li>
+        <li data-icon="false"><a data-transition="none" href="#events/search">Sök</a></li>
       </ul>
       
       <ul data-role="listview" class="article" data-inset="true" data-filter-theme="d" data-split-icon="info">
         <% _.each(categories, function (category) { %>
-          <li><a data-transition="slide" href="<%= category.url %>"><%= category.label %></a></li>
+          <li><a data-transition="none" href="<%= category.url %>"><%= category.label %></a></li>
         <% }); %>
       </ul>
       
@@ -28,19 +28,19 @@
   <div data-role="page" id="eventList">
 
     <div data-role="header" data-theme="f">
-      <a href="#events" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Evenemang</a>
+      <a href="#events" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse">Evenemang</a>
       <h1></h1>
     </div>
 
     <div data-role="content">
-      <a class="ui-btn-right" data-icon="search" data-transition="slide" data-iconpos="notext" href="#events/search">Sök</a>
+      <a class="ui-btn-right" data-icon="search" data-transition="none" data-iconpos="notext" href="#events/search">Sök</a>
       <% if(events.length < 1) { %>
         <li>Inga evenemang matchar ditt val. <a href="#events/search">Försök igen.</a></li>
     
       <% } else { %>
         <ul data-role="listview" id="eventlist" data-inset="true" data-filter-theme="d" data-split-icon="info">
             <% _.each(events, function (event) { %>
-              <li><a data-transition="slide" href="<%= event.url %>">
+              <li><a data-transition="none" href="<%= event.url %>">
                 <img src="<%= event.imgurl %>" />
                 <h2><%= event.title %></h2>
                 <p><%= event.location %></p>
@@ -58,14 +58,14 @@
 <script type="text/template" id="eventTemplate">
   <div data-role="page" id="eventItem">
     <div data-role="header" data-theme="f">
-      <a href="#events/category/<%= catid %>" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Evenemang</a>
+      <a href="#events/category/<%= catid %>" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse">Evenemang</a>
       <h1></h1>
       
 
     </div>
 
     <div data-role="content" class="event-content">
-      <a class="ui-btn-right" data-icon="search" data-transition="slide" data-iconpos="notext" href="#events/search">Sök alla</a><br /><br />
+      <a class="ui-btn-right" data-icon="search" data-transition="none" data-iconpos="notext" href="#events/search">Sök alla</a><br /><br />
       <%= event %>
     </div>
   </div>
@@ -75,9 +75,9 @@
 <script type="text/template" id="searchTemplate">
   <div data-role="page" id="eventSearchItem">
     <div data-role="header" data-theme="f">
-      <a href="" data-rel="back" class="ui-btn-left" data-icon="delete" data-transition="slideup" data-direction="reverse" data-iconpos="notext">Tillbaka</a>    
+      <a href="" data-rel="back" class="ui-btn-left" data-icon="delete" data-transition="none" data-direction="reverse" data-iconpos="notext">Tillbaka</a>    
       <h1>Sök evenemang</h1>
-      <a class="ui-btn-right" data-icon="search" data-transition="slide" id="event-search-btn" href="">Skicka</a>
+      <a class="ui-btn-right" data-icon="search" data-transition="none" id="event-search-btn" href="">Skicka</a>
     </div>
 
     <div data-role="content" id="event-search-form">

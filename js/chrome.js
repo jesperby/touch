@@ -12,13 +12,13 @@ define(['jquery', 'underscore', 'backbone', 'jqm'],function($, _, Backbone) {
 
     if( window.location.hash == '#news' || window.location.hash == '#events' ||
         window.location.hash == '#jobs' || window.location.hash == '#komin-news' ) {
-      $header.prepend($('<a href="#home" class="ui-btn-left" data-icon="arrow-l" data-transition="slide" data-direction="reverse">Hem</a>'));
+      $header.prepend($('<a href="#home" class="ui-btn-left" data-icon="arrow-l" data-transition="none" data-direction="reverse">Hem</a>'));
     }
 
     if( window.location.hash != '#home' && window.location.hash.substring(0, 8) != '#poi/map' &&
         window.location.hash != '#report' && window.location.hash.substring(0, 20) != '#poi/info/directions' &&
         window.location.hash.substring(0, 14) != '#events/search' ) {
-      $header.append($('<a href="#home" class="ui-btn-right" data-icon="home" data-transition="slide" data-direction="reverse" data-iconpos="notext">Hem</a>'));
+      $header.append($('<a href="#home" class="ui-btn-right" data-icon="home" data-transition="none" data-direction="reverse" data-iconpos="notext">Hem</a>'));
     }
   }
   
