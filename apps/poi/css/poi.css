@@ -3,31 +3,18 @@ li .poiOpenClosed {
 	font-style:italic;
 }
 
+#poicatlist .ui-li-icon {
+	position:absolute;
+	top:50%;
+	margin-top:-19px;
 
-
-#poicatlist .ui-li-thumb {
+	/* Orig image has size 64x78px */
+	min-width: 2.05em;
+	min-height: 2.5em;
 	
-	position: absolute;
-	top: 50%;
-	left: 10px;
-	margin-top: -1.2em;
-	max-height: 67%;
-	max-width: 50%;
 }
 
-/*
-#poicatlist .ui-btn-inner {
-	font-size:0px;
-}
-*/
-
-/*
 #poicatlist .ui-li-heading {
-	margin: 1.2em 0;
-}
-*/
-
-#poicatlist a.ui-link-inherit {
-	min-height: 21px;
-	padding-left: 60px!important;
+	margin-left: 1.5em;
+	white-space:normal;
 }

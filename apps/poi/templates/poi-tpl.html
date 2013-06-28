@@ -14,7 +14,7 @@
             <li>
               <a data-transition="none" href="#poi/list<%= (!type.id ? '' : '/'+type.id) %>" class="ui-link-inherit">
               <% if(type.image) { %>
-                <img src="<%=type.image%>" alt="<%=type.name%>" />
+                <img class="ui-li-icon" src="<%=type.image%>" alt="<%=type.name%>" />
               <% } %>  
                 <h3 class="ui-li-heading"><%= type.name %></h3>
               </a>
@@ -46,10 +46,12 @@
             %>
             <li>
               <a data-transition="none" href="#poi/info/<%= poi.id %>" class="ui-link-inherit">
+
                 <% if(img) { %>
-                  <img src="<%=img%>" alt="<%=poi.name%>" />
+                  <img class="ui-li-icon" src="<%=img%>" alt="<%=poi.name%>" />
                 <% } %>
-                <%= poi.name %><br /><br />
+                
+                <h3 class="ui-li-heading"><%= poi.name %></h3>
                 <%
                   var closed = poi.active == 'true' ? '' : 'Tillfälligt stängd';
                 %>
