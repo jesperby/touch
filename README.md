@@ -1,7 +1,7 @@
 Touch 1.0
 =========
 
-Web based touch interface to selected services
+Web based touch interface to selected services. Version from 2010.
 
 Setup
 =====
@@ -17,8 +17,8 @@ Dependencies
 The app has been tested with the lib versions below.
 
 Create directory app/public/jqtouch, add the following:
-* [jQT](http://jqtjs.com/) - 
-* [Jquery min](http://code.jquery.com/jquery-1.4.2.min.js) - v1.4.2
+* [jQTouch](https://github.com/senchalabs/jQTouch)
+* [jQuery](http://code.jquery.com/jquery-1.4.2.min.js) - v1.4.2
 
 In directory app/public/js:
 * add [Jquery Easing Plugin](http://gsgd.co.uk/sandbox/jquery/easing/) - v1.3
@@ -28,8 +28,6 @@ License
 =======
 
 Released under AGPL version 3.
-
-
 
 
 
