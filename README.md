@@ -36,6 +36,13 @@ In the same directory, `js/lib/require`, add the following [require plugins](htt
 * [noext](https://github.com/millermedeiros/requirejs-plugins/tree/master/src) - v0.3.1 
 * [text](https://github.com/millermedeiros/requirejs-plugins/tree/master/src) - v2.0.5
 
+Other
+=====
+
+## Jquery Mobile Theme
+
+For external projects, the custom jquery mobile design theme of this app can be found in the stylesheet css/jquery.mobile.custom-1.3.0.css.
+
 License
 =======
 
