@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="Asset builder" default="main" basedir=".">
+
+    <description>
+        Minify specified js and css files. 
+    </description>
+
+    <property name="base.dir" value="app/public/" />
+    <property name="yui-compressor.jar" location="../assets/lib/yuicompressor-2.4.2.jar" />
+
+
+    <target name="main">
+
+        <!-- Touch theme -->
+        <echo message="Building touch JavaScript file" />
+        <concat destfile="${base.dir}js/min.js" force="no">
+            <filelist id="js-touch-concat" dir="${base.dir}/">
+                <file name="jqtouch/jquery-1.4.2.min.js"/>
+                <file name="jqtouch/jqtouch.js"/>
+                <file name="js/jquery.easing.1.3.js"/>
+                <file name="js/gears_init.js"/>
+                <file name="js/config.js"/>
+                <file name="js/global.js"/>
+                <file name="js/events.js"/>
+                <file name="js/feeds.js"/>
+            </filelist>
+        </concat>
+        <echo message="Building touch CSS file" />
+    	<concat destfile="${base.dir}css/min.css" force="no">
+            <filelist id="css-touch-concat" dir="${base.dir}/">
+                <file name="jqtouch/jqtouch.css"/>
+                <file name="css/theme.css"/>
+                <file name="css/touch.css"/>
+            </filelist>
+        </concat>
+
+        <!-- invoke compressor -->
+        <apply executable="java" verbose="true" force="true" parallel="false" failonerror="true" dest="${base.dir}" taskname="yui">
+            <fileset dir="${base.dir}">
+                <include name="js/min.js" />
+                <include name="css/min.css" />
+            </fileset>
+            <arg value="-jar" />
+            <arg file="${yui-compressor.jar}" />
+            <srcfile />
+            <arg value="--nomunge" />
+            <arg value="--preserve-semi" />
+            <arg value="-o" />
+            <mapper type="identity"/>
+            <targetfile/>
+        </apply>
+
+    </target>
+
+</project>
