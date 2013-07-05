@@ -41,7 +41,7 @@ Other
 
 ## Jquery Mobile Theme
 
-For external projects, the custom jquery mobile design theme of this app can be found in the stylesheet css/jquery.mobile.custom-1.3.0.css.
+For external projects, the custom jquery mobile design theme of this app can be found in the stylesheet css/jquery.mobile.custom-1.3.0.css. The theme was created using the Jquery Mobile [ThemeRoller](http://jquerymobile.com/themeroller/index.php).
 
 License
 =======
