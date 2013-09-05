@@ -1,4 +1,4 @@
-define(['jquery', 'backbone'], function ($, Backbone) {
+define(['jquery', 'backbone', 'conf'], function ($, Backbone, Conf) {
   'use strict';
 
   var Feed = Backbone.Collection.extend({
@@ -16,8 +16,8 @@ define(['jquery', 'backbone'], function ($, Backbone) {
         closedMapImage: null
       }
     }),
-    
-    url: 'http://webapps2.malmo.se/feeds/?feed=poi-types',
+  
+    url: Conf.poiTypeFeed,
     
     comparator: function(item) {
         return item.get('name');

@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'apps/poi/js/PoiTypeCollection',], function ($, Backbone, PoiTypeCollection) {
+define(['jquery', 'backbone', 'apps/poi/js/PoiTypeCollection', 'conf'], function ($, Backbone, PoiTypeCollection, Conf) {
   'use strict';
 
   //var typeCollection: PoiTypeCollection;
@@ -39,7 +39,7 @@ define(['jquery', 'backbone', 'apps/poi/js/PoiTypeCollection',], function ($, Ba
                   item.get('name') ];
     },
 
-    url: 'http://webapps2.malmo.se/feeds/?feed=poi-points',
+    url: Conf.poiFeed,
     
     sync: function(method, model, options){  
       options.dataType = "jsonp";
@@ -49,6 +49,7 @@ define(['jquery', 'backbone', 'apps/poi/js/PoiTypeCollection',], function ($, Ba
     filterByType: function( typeid ) {
       var pois = [];
       this.each(function(poiModel){ 
+        console.log( poiModel.get('type') );
         if( poiModel.get('type') == typeid ) {
           pois.push( poiModel );
         }
