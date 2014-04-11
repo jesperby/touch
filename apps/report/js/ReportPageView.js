@@ -101,6 +101,8 @@ define(['jquery', 'jqvalidate', 'backbone', 'chrome', 'locator', 'text!apps/repo
     mapPosFetch: function () {
       $("#formWrapper").hide();
       $("#mapWrapper").show();
+      $('#report').trigger( "pagecreate" );
+
 
       this.mapLoad();
       
@@ -109,7 +111,8 @@ define(['jquery', 'jqvalidate', 'backbone', 'chrome', 'locator', 'text!apps/repo
         } );
       
       $('#whichPosition').popup("close");
-      
+
+      $('#mapWrapper').trigger( "pagecreate" );
     },
 
     mapPosCurrent: function () {
