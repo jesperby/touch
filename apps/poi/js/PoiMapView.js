@@ -84,7 +84,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
 
       if( !mainpoi ) {
         poiCollection.each(function(poi){ 
-          image = poi.get("active") ? 
+          image = poi.get("active") == 'true' ? 
             PoiTypeCollection.get(poi.get('type')).get( 'mapImage' ) :
             PoiTypeCollection.get(poi.get('type')).get( 'closedMapImage' );
 
@@ -97,7 +97,7 @@ define(['jquery', 'backbone', 'chrome', 'apps/poi/js/PoiCollection', 'text!apps/
           });
         });
       } else {
-        image = mainpoi.get("active") ? 
+        image = mainpoi.get("active") == 'true' ? 
           PoiTypeCollection.get(mainpoi.get('type')).get( 'mapImage' ) :
           PoiTypeCollection.get(mainpoi.get('type')).get( 'closedMapImage' );
 
