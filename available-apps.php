@@ -65,6 +65,7 @@ $apps = array(
       'icon' => 'false',
       'preload' => FALSE
     ),
+    /*
     'report' => array(
       'label' => 'Felanmälan',
       'description' => 'Felanmäl något i staden',
@@ -73,6 +74,7 @@ $apps = array(
       'icon' => 'arrow-r',
       'preload' => TRUE
     ),
+    */
     'mstad' => array(
       'label' => 'Malmo.se',
       'description' => 'Malmö stads webbplats',
