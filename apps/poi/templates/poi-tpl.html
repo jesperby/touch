@@ -83,7 +83,7 @@
       <p><%= poiinfo.address %></p>
       <img src="<%= poiinfo.image %>"/><br />
       <a href="#poi/info/directions/<%=poiinfo.id%>/bicycling" data-role="button" data-inline="true" data-theme="f">Hitta hit</a>
-      <a href="#report/<%=poiinfo.latitude%>/<%=poiinfo.longitude%>" id="errorReportButton" data-role="button" data-inline="true" data-theme="f">Felanmälan</a>  
+      
       
       <% if(poiinfo.active == 'true') { %> 
         <% if(poiinfo.openTime != '' && poiinfo.closeTime != '') { %> 
